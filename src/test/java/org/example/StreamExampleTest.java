@@ -24,4 +24,11 @@ class StreamExampleTest {
                 StreamExample.distinctByLength(List.of("red", "blue", "green", "white")))
                 .containsExactly("red", "blue", "green");
     }
+
+    @Test
+    void shouldDistinctByLengthGather() {
+        assertThat(
+                StreamExample.distinctByLengthGather(List.of("red", "blue", "green", "white")))
+                .containsExactly("red", "blue", "green");
+    }
 }

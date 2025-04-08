@@ -1,6 +1,10 @@
 package org.example;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Gatherer;
 
 public class StreamExample {
 
@@ -17,6 +21,29 @@ public class StreamExample {
                 .map(DistinctByLength::new)
                 .distinct()
                 .map(DistinctByLength::str)
+                .toList();
+    }
+
+    public static List<String> distinctByLengthGather(List<String> list) {
+        return list.stream()
+                .gather(new Gatherer<String, Set<Integer>, String>() {
+
+                    @Override
+                    public Supplier<Set<Integer>> initializer() {
+                        return HashSet::new;
+                    }
+
+                    @Override
+                    public Integrator<Set<Integer>, String, String> integrator() {
+                        return (state, element, downstream) -> {
+                            boolean add = state.add(element.length());
+                            if(add) {
+                                downstream.push(element);
+                            }
+                            return true;
+                        };
+                    }
+                })
                 .toList();
     }
 
