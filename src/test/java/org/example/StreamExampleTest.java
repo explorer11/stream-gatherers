@@ -17,4 +17,11 @@ class StreamExampleTest {
                         Pair.of("C", 1), Pair.of("C", 2), Pair.of("C", 3));
 
     }
+
+    @Test
+    void shouldDistinctByLength() {
+        assertThat(
+                StreamExample.distinctByLength(List.of("red", "blue", "green", "white")))
+                .containsExactly("red", "blue", "green");
+    }
 }
