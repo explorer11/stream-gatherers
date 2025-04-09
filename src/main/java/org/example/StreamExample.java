@@ -20,6 +20,19 @@ public class StreamExample {
                 .toList();
     }
 
+    public static int selectOne(List<Integer> list) {
+        int state = -1;
+        for (int i=0; i < list.size() - 2; i++) {
+            Integer item = list.get(i);
+            Integer next = list.get(i + 1);
+            state = item;
+            if(state == next) {
+                return state;
+            }
+        }
+        return state;
+    }
+
     private static class DistinctByLength {
 
         private final String str;
