@@ -24,4 +24,12 @@ class StreamExampleTest {
                 StreamExample.distinctByLength(List.of("red", "blue", "green", "white")))
                 .containsExactly("red", "blue", "green");
     }
+
+    @Test
+    void shouldSelect() {
+        int target = 963;
+        assertThat(
+                StreamExample.selectOne(List.of(56, 2, target, target, 87)))
+                .isEqualTo(target);
+    }
 }
