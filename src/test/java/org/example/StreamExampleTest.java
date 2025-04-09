@@ -26,10 +26,10 @@ class StreamExampleTest {
     }
 
     @Test
-    void shouldSelect() {
+    void shouldSelectFirstDuplicate() {
         int target = 963;
         assertThat(
-                StreamExample.selectOne(List.of(56, 2, target, target, 87)))
+                StreamExample.selectFirstDuplicate(List.of(56, 2, target, target, 87)))
                 .isEqualTo(target);
     }
 }
