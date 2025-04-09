@@ -20,7 +20,7 @@ public class StreamExample {
                 .toList();
     }
 
-    public static int selectOne(List<Integer> list) {
+    public static int selectFirstDuplicate(List<Integer> list) {
         int state = -1;
         for (int i=0; i < list.size() - 2; i++) {
             Integer item = list.get(i);
