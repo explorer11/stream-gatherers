@@ -24,4 +24,12 @@ class StreamExampleTest {
                 StreamExample.distinctByLength(List.of("red", "blue", "green", "white")))
                 .containsExactly("red", "blue", "green");
     }
+
+    @Test
+    void shouldSelectFirstDuplicate() {
+        int target = 963;
+        assertThat(
+                StreamExample.selectFirstDuplicate(List.of(56, 2, target, target, 87)))
+                .isEqualTo(target);
+    }
 }
